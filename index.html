@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insightly | Business intelligence, simplified.</title>
+  <meta name="description" content="Premium analytics dashboard for modern businesses.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="brand-icon">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+          <span class="brand-name">INSIGHTLY</span>
+        </div>
+        <button class="collapse-btn" id="collapseSidebarBtn" aria-label="Toggle Sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+      </div>
+
+      <div class="sidebar-content">
+        <nav class="sidebar-nav">
+          <span class="nav-label">Main Menu</span>
+          <a href="#" class="nav-item active" data-view="overview">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+            <span class="nav-text">Overview</span>
+          </a>
+          <a href="#" class="nav-item" data-view="analytics">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span class="nav-text">Analytics</span>
+          </a>
+          <a href="#" class="nav-item" data-view="users">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span class="nav-text">Users</span>
+          </a>
+          <a href="#" class="nav-item" data-view="transactions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <span class="nav-text">Transactions</span>
+          </a>
+          <a href="#" class="nav-item" data-view="reports">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <span class="nav-text">Reports</span>
+          </a>
+
+          <span class="nav-label">Workspace</span>
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            <span class="nav-text">Projects</span>
+          </a>
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span class="nav-text">Team</span>
+          </a>
+
+          <span class="nav-label">System</span>
+          <a href="#" class="nav-item" id="navNotificationsBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="nav-text">Notifications</span>
+            <span class="badge unread-badge">3</span>
+          </a>
+          <a href="#" class="nav-item" id="navSettingsBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span class="nav-text">Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-profile" id="sidebarProfileBtn">
+          <img src="https://i.pravatar.cc/150?img=68" alt="User Avatar" class="avatar">
+          <div class="user-info">
+            <span class="user-name">Degenlogy</span>
+            <span class="user-role">Administrator</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <div class="page-title">
+            <h1 id="pageTitleText">Analytics Overview</h1>
+            <p class="subtitle">Performance summary and business activity</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button class="icon-btn search-btn" id="openSearchBtn" aria-label="Search" title="Search (Cmd+K)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span class="shortcut-hint">⌘K</span>
+          </button>
+
+          <div class="date-selector">
+            <select id="dateRangeSelect" class="form-select">
+              <option value="today">Today</option>
+              <option value="7days">Last 7 Days</option>
+              <option value="30days" selected>Last 30 Days</option>
+              <option value="90days">Last 90 Days</option>
+              <option value="year">This Year</option>
+            </select>
+          </div>
+
+          <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle Theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+
+          <button class="icon-btn notification-btn" id="headerNotifBtn" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="badge unread-badge">3</span>
+          </button>
+
+          <div class="profile-menu-container">
+            <button class="avatar-btn" id="headerProfileBtn">
+              <img src="https://i.pravatar.cc/150?img=68" alt="Profile" class="avatar">
+            </button>
+            <div class="dropdown-menu" id="profileDropdown">
+              <div class="dropdown-header">
+                <strong>degenlogy</strong>
+                <span>degenlogy69@gmail.com</span>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">My Profile</a>
+              <a href="#" class="dropdown-item" id="dropdownSettingsBtn">Account Settings</a>
+              <a href="#" class="dropdown-item">Preferences</a>
+              <a href="#" class="dropdown-item">Help Center</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item text-danger">Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard View -->
+      <div class="view-section active" id="view-overview">
+        <!-- KPI Cards -->
+        <section class="kpi-grid" id="kpiContainer">
+          <!-- Skeleton loaders will be replaced by JS -->
+          <div class="kpi-card skeleton"><div class="skeleton-bone title"></div><div class="skeleton-bone value"></div><div class="skeleton-bone stat"></div></div>
+          <div class="kpi-card skeleton"><div class="skeleton-bone title"></div><div class="skeleton-bone value"></div><div class="skeleton-bone stat"></div></div>
+          <div class="kpi-card skeleton"><div class="skeleton-bone title"></div><div class="skeleton-bone value"></div><div class="skeleton-bone stat"></div></div>
+          <div class="kpi-card skeleton"><div class="skeleton-bone title"></div><div class="skeleton-bone value"></div><div class="skeleton-bone stat"></div></div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="dashboard-grid main-charts">
+          <div class="card col-span-2">
+            <div class="card-header">
+              <h2 class="card-title">Revenue Overview</h2>
+              <div class="card-actions">
+                <button class="btn btn-sm btn-outline" id="exportChartBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Export
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart-container" id="revenueChartContainer">
+                <div class="chart-tooltip" id="chartTooltip"></div>
+                <!-- SVG Chart injected via JS -->
+              </div>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Users Growth</h2>
+            </div>
+            <div class="card-body">
+              <div class="chart-container" id="usersChartContainer">
+                <!-- CSS Bar chart injected via JS -->
+              </div>
+              <div class="chart-legend mt-4">
+                <span class="legend-item"><span class="dot dot-primary"></span>New</span>
+                <span class="legend-item"><span class="dot dot-secondary"></span>Returning</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Breakdown Section -->
+        <section class="dashboard-grid breakdown-charts">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Performance Breakdown</h2>
+            </div>
+            <div class="card-body">
+              <div class="progress-list" id="trafficSourcesList">
+                <!-- Traffic sources injected via JS -->
+              </div>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Device Analytics</h2>
+            </div>
+            <div class="card-body flex-center">
+              <div class="donut-chart" id="deviceDonutChart">
+                <div class="donut-hole">
+                  <div class="donut-total">100%</div>
+                </div>
+              </div>
+              <div class="chart-legend vertical ml-6" id="deviceLegend">
+                <!-- Device legend injected via JS -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bottom Grid: Transactions & Activity -->
+        <section class="dashboard-grid bottom-grid">
+          <div class="card col-span-2">
+            <div class="card-header">
+              <h2 class="card-title">Recent Transactions</h2>
+              <div class="card-actions">
+                <div class="search-box small">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                  <input type="text" id="txSearchInput" placeholder="Search...">
+                </div>
+                <button class="btn btn-sm btn-outline" id="exportTableBtn">Export CSV</button>
+              </div>
+            </div>
+            <div class="card-body no-padding">
+              <div class="table-responsive">
+                <table class="data-table" id="transactionsTable">
+                  <thead>
+                    <tr>
+                      <th data-sort="id">ID <svg viewBox="0 0 24 24" width="12" fill="none" stroke="currentColor"><polyline points="6 9 12 15 18 9"></polyline></svg></th>
+                      <th data-sort="customer">Customer</th>
+                      <th data-sort="date">Date</th>
+                      <th data-sort="amount">Amount</th>
+                      <th data-sort="status">Status</th>
+                      <th data-sort="method">Method</th>
+                    </tr>
+                  </thead>
+                  <tbody id="txTableBody">
+                    <!-- Transactions injected via JS -->
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-pagination">
+                <span class="page-info">Showing <span id="pageStart">1</span> to <span id="pageEnd">5</span> of <span id="pageTotal">12</span> results</span>
+                <div class="page-controls">
+                  <button class="btn btn-icon" id="prevPage" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                  <button class="btn btn-icon" id="nextPage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Recent Activity</h2>
+            </div>
+            <div class="card-body">
+              <div class="activity-feed" id="activityFeed">
+                <!-- Activities injected via JS -->
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+      <!-- Connected placeholder views for all sidebar routes -->
+      <div class="view-section" id="view-analytics">
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">Analytics</h2></div>
+          <div class="card-body">
+            <p class="text-secondary">Analytics workspace is connected and ready for additional modules.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-section" id="view-users">
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">Users</h2></div>
+          <div class="card-body">
+            <p class="text-secondary">User management workspace is connected and ready for additional modules.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-section" id="view-transactions">
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">Transactions</h2></div>
+          <div class="card-body">
+            <p class="text-secondary">Transaction workspace is connected. Use the transaction table on Overview for the current demo data.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder for other views -->
+      <div class="view-section" id="view-reports">
+        <div class="card">
+          <div class="card-header"><h2>Reports Library</h2></div>
+          <div class="card-body">
+            <p class="text-secondary mb-4">Generate and download comprehensive analytics reports.</p>
+            <div class="reports-grid" id="reportsGrid">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Modals & Overlays -->
+  
+  <!-- Command Center / Global Search -->
+  <div class="modal" id="searchModal" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close="searchModal"></div>
+    <div class="modal-content search-modal-content">
+      <div class="search-input-wrapper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="globalSearchInput" placeholder="Search pages, reports, settings... (Esc to close)" autocomplete="off">
+        <span class="esc-hint">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults">
+        <!-- Results via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Notifications Panel -->
+  <div class="notification-panel" id="notificationPanel">
+    <div class="panel-header">
+      <h3>Notifications</h3>
+      <button class="btn-link" id="markAllReadBtn">Mark all as read</button>
+    </div>
+    <div class="panel-body" id="notificationList">
+      <!-- Notifications via JS -->
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal" id="settingsModal" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close="settingsModal"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Settings</h2>
+        <button class="btn-close" data-close="settingsModal" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body settings-layout">
+        <div class="settings-tabs">
+          <button class="tab-btn active" data-tab="set-general">General</button>
+          <button class="tab-btn" data-tab="set-appearance">Appearance</button>
+          <button class="tab-btn" data-tab="set-notifications">Notifications</button>
+          <button class="tab-btn" data-tab="set-privacy">Privacy</button>
+        </div>
+        <div class="settings-content">
+          <div class="tab-pane active" id="set-general">
+            <div class="form-group">
+              <label>Workspace Name</label>
+              <input type="text" class="form-control" value="Insightly Inc." id="setWorkspaceName">
+            </div>
+            <div class="form-group">
+              <label>Timezone</label>
+              <select class="form-select" id="setTimezone">
+                <option value="UTC">UTC (Coordinated Universal Time)</option>
+                <option value="EST">Eastern Standard Time</option>
+                <option value="PST">Pacific Standard Time</option>
+              </select>
+            </div>
+          </div>
+          <div class="tab-pane" id="set-appearance">
+            <div class="form-group">
+              <label>Theme Preference</label>
+              <div class="theme-options">
+                <label class="radio-card"><input type="radio" name="theme_pref" value="light"> <span>Light</span></label>
+                <label class="radio-card"><input type="radio" name="theme_pref" value="dark"> <span>Dark</span></label>
+                <label class="radio-card"><input type="radio" name="theme_pref" value="system"> <span>System</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="set-notifications">
+            <div class="toggle-group">
+              <div class="toggle-info">
+                <strong>Email Notifications</strong>
+                <span>Receive daily summary emails.</span>
+              </div>
+              <label class="switch"><input type="checkbox" id="setNotifEmail" checked><span class="slider round"></span></label>
+            </div>
+            <div class="toggle-group mt-4">
+              <div class="toggle-info">
+                <strong>Push Notifications</strong>
+                <span>Alerts for critical events.</span>
+              </div>
+              <label class="switch"><input type="checkbox" id="setNotifPush" checked><span class="slider round"></span></label>
+            </div>
+          </div>
+          <div class="tab-pane" id="set-privacy">
+            <div class="toggle-group">
+              <div class="toggle-info">
+                <strong>Analytics Tracking</strong>
+                <span>Help improve Insightly by sending usage data.</span>
+              </div>
+              <label class="switch"><input type="checkbox" id="setPrivacyTrack"><span class="slider round"></span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" data-close="settingsModal">Cancel</button>
+        <button class="btn btn-primary" id="saveSettingsBtn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transaction Details Modal -->
+  <div class="modal" id="txModal" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close="txModal"></div>
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h2 id="txModalTitle">Transaction Details</h2>
+        <button class="btn-close" data-close="txModal" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="txModalBody">
+        <!-- Rendered via JS -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="txDownloadReceipt">Download Receipt</button>
+        <button class="btn btn-primary" data-close="txModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
