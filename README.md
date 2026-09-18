@@ -7,8 +7,3 @@ A responsive analytics dashboard built with HTML, CSS and JavaScript.
 - Analytics cards and charts
 - Clean interface
 - Interactive elements
-
-### Tech Stack
-- HTML
-- CSS
-- JavaScript
