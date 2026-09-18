@@ -7,3 +7,5 @@ A responsive analytics dashboard built with HTML, CSS and JavaScript.
 - Analytics cards and charts
 - Clean interface
 - Interactive elements
+
+Liver Demo - https://analytics-dashboard-phi-lime.vercel.app/
